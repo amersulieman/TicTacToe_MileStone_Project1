@@ -1,6 +1,5 @@
 layOutOftheGame = [ 1, 2, 3, 4, 5, 6, 7, 8, 9]
 boardinAction = [' ']*9
-print(boardinAction)
 player1Symbol = None
 player2Symbol = None
 def displayRules():
@@ -30,7 +29,18 @@ def getUserSymbol():
     else:
         player2Symbol ="X"
 
+def takeTurn(gameboard):
+    player1Gridchoice = input("Player 1: which grid would you choose: ")
+    #player1gridchoice -1 because our array starts at 0
+    gameboard[int(player1Gridchoice)-1]=player1Symbol
+    
+    player2Gridchoice = input("Player 2: which grid would you choose: ")
+    #player2gridchoice -1 because our array starts at 0
+    gameboard[int(player2Gridchoice)-1]=player2Symbol
+
 
 displayRules()
 displayBoard(layOutOftheGame)
 getUserSymbol()
+takeTurn(boardinAction)
+displayBoard(boardinAction)
