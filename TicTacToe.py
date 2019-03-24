@@ -53,26 +53,29 @@ def takeTurn(gameboard,player):
 
 def winChecks(gameboard,player):
     if gameboard[0]==playersSymbol[player] and  gameboard[1]== playersSymbol[player] and gameboard[2]== playersSymbol[player]:
-        print(player + " Won")
+        print("\t"+player + " WON!!!!!!!")
         return True
     elif gameboard[3]==playersSymbol[player] and  gameboard[4]==playersSymbol[player] and gameboard[5]== playersSymbol[player]:
-        print(player + " Won")
+        print("\t"+player + " WON!!!!!!!")
         return True
     elif gameboard[6]==playersSymbol[player] and  gameboard[7]== playersSymbol[player] and gameboard[8]== playersSymbol[player]:
-        print(player + " Won")
+        print("\t"+player + " WON!!!!!!!")
         return True
     elif gameboard[0]==playersSymbol[player] and  gameboard[3]== playersSymbol[player] and gameboard[6]==playersSymbol[player]:
-        print(player + " Won")
+        print("\t"+player + " WON!!!!!!!")
         return True
     elif gameboard[1]==playersSymbol[player] and  gameboard[4]== playersSymbol[player] and gameboard[7]== playersSymbol[player]:
-        print(player + " Won")
+        print("\t"+player + " WON!!!!!!!")
         return True
     elif gameboard[2]==playersSymbol[player] and  gameboard[5]== playersSymbol[player] and gameboard[8]== playersSymbol[player]:
-        print(player + " Won")
+        print("\t"+player + " WON!!!!!!!")
         return True   
     elif gameboard[0]==playersSymbol[player]and  gameboard[4]== playersSymbol[player] and gameboard[8]== playersSymbol[player]:
-        print(player + " Won")
-        return True     
+        print("\t"+player + " WON!!!!!!!")
+        return True
+    elif gameboard[2]==playersSymbol[player]and  gameboard[4]== playersSymbol[player] and gameboard[6]== playersSymbol[player]:
+        print("\t"+player + " WON!!!!!!!")
+        return True          
     else:
         return False
 
