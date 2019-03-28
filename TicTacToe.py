@@ -69,11 +69,13 @@ def takeTurn(gameboard,player):
         takeTurn(gameboard,player)
 
 def validate_player_choice(positionsUsed,positionPicked):
+    #To be a valid input, the player must pick an integer between 1 and 9 and that havent been used before
     if positionPicked.isdigit() and int(positionPicked) in range(1,10) and int(positionPicked) in (positionsUsed):
             return True
     else: 
         return False
 
+#Check the positions for winning, if three in a row are equal then player wins
 def winChecks(gameboard,player):
     if gameboard[0]==playersSymbol[player] and  gameboard[1]== playersSymbol[player] and gameboard[2]== playersSymbol[player]:
         return True
@@ -94,7 +96,7 @@ def winChecks(gameboard,player):
     else:
         return False
 
-def beginGameLoopForPlayers():
+def gameLoopForPlayers():
     global numOfPlays
     #max of turns taken is 9 because we have 9 grids, if all filled then it is tie
     while numOfPlays<9:
@@ -114,20 +116,18 @@ def beginGameLoopForPlayers():
         print("\tIt's a tie!!!")
 
 
-def gameDataReset():
-    global gameBoardGridsNumbers
-    global boardinAction
-    global numOfPlays
+def gameDataReset(numberOfTurns,gameBoard,GameBoardPositions):
     #reset number of play
-    numOfPlays=0
+    numberOfTurns=0
     #reset grids numbers
-    gameBoardGridsNumbers=list(range(1,10))
+    GameBoardPositions =list(range(1,10))
     #rest the board displayed at each turn
-    boardinAction= [" "]*9
+    gameBoard= [" "]*9
+    return numberOfTurns,gameBoard,GameBoardPositions
 
 def startGame():
     getUserSymbol()
-    beginGameLoopForPlayers()
+    gameLoopForPlayers()
 
 introductionToTheGame()
 #first game round
@@ -139,7 +139,8 @@ while keepPlaying:
     if userChoice == "n":
         keepPlaying =False
     elif userChoice == "y":
-        gameDataReset() #reset game data
+        #reset game data
+        numOfPlays,boardinAction,gameBoardGridsNumbers = gameDataReset(numOfPlays,boardinAction,gameBoardGridsNumbers) 
         displayGameBoard(gameBoardGridsNumbers) #display the grids
         startGame()     #start game from scratch
     #if user pressed any other input, reensure Y or N
